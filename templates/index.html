@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Level Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container form-container">
+        <h1>Stress Level Predictor</h1>
+        <form action="/predict" method="POST">
+            <label for="humidity">Humidity</label>
+            <input type="number" id="humidity" name="humidity" step="0.01" required>
+
+            <label for="temperature">Temperature</label>
+            <input type="number" id="temperature" name="temperature" step="0.01" required>
+
+            <label for="step_count">Step Count</label>
+            <input type="number" id="step_count" name="step_count" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="prediction-result">
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if stress_description %}
+    <div class="container description-container">
+        <h2>Stress Level Description</h2>
+        <p>{{ stress_description }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
