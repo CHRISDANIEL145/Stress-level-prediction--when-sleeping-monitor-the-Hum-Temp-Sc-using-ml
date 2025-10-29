@@ -17,3 +17,5 @@ numpy
 scikit-learn
 tensorflow
 joblib
+pandas
+
